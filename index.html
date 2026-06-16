@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVS Vet Care | Premium Livestock & Animal Health Products</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* High-attraction breathing ambient background pulse */
+        @keyframes magneticPulse {
+            0%, 100% { transform: scale(1); opacity: 0.15; }
+            50% { transform: scale(1.15); opacity: 0.25; }
+        }
+
+        .ambient-glow-1 {
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            width: 40vw;
+            height: 40vw;
+            border-radius: 50%;
+            background: radial-gradient(circle, #059669 0%, transparent 70%);
+            filter: blur(80px);
+            pointer-events: none;
+            animation: magneticPulse 8s ease-in-out infinite;
+        }
+
+        .ambient-glow-2 {
+            position: absolute;
+            bottom: 15%;
+            right: 5%;
+            width: 45vw;
+            height: 45vw;
+            border-radius: 50%;
+            background: radial-gradient(circle, #06b6d4 0%, transparent 70%);
+            filter: blur(100px);
+            pointer-events: none;
+            animation: magneticPulse 12s ease-in-out infinite reverse;
+        }
+
+        /* High-Intensity Rainbow Glow Mouse Follower */
+        .mouse-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, #ff0055, #ff9900, #33ff00, #00ffff, #0055ff, #9900ff, #ff0055);
+            filter: blur(70px);
+            opacity: 0.25;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: screen;
+            will-change: transform;
+            transition: transform 0.12s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* Custom active lifting script classes to prevent conflict with standard hover styles */
+        .product-card {
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card-lifted {
+            transform: translateY(-16px) scale(1.03) !important;
+            border-color: #10b981 !important;
+            box-shadow: 0 25px 50px -12px rgba(16, 185, 129, 0.25) !important;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-emerald-500 selection:text-slate-900 relative min-h-screen overflow-x-hidden">
+
+    <!-- Rainbow Follower Dynamic Background Element -->
+    <div id="glow-circle" class="mouse-glow hidden lg:block"></div>
+
+    <!-- Background Ambient Structural Magnetism -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="ambient-glow-1"></div>
+        <div class="ambient-glow-2"></div>
+    </div>
+
+    <!-- Mobile Navigation Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-slate-950/95 z-50 transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-center gap-8 md:hidden">
+        <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-2xl">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <a href="#hero" onclick="toggleMobileMenu()" class="text-2xl font-semibold hover:text-emerald-400 transition-colors">Home</a>
+        <a href="#about" onclick="toggleMobileMenu()" class="text-2xl font-semibold hover:text-emerald-400 transition-colors">About</a>
+        <a href="#products" onclick="toggleMobileMenu()" class="text-2xl font-semibold hover:text-emerald-400 transition-colors">Products</a>
+        <a href="#contact" onclick="toggleMobileMenu()" class="px-6 py-3 rounded-xl bg-emerald-600 text-slate-950 font-bold shadow-lg shadow-emerald-500/20">Contact Us</a>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full z-40 bg-slate-950/80 backdrop-blur-xl border-b border-slate-900 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-3">
+                    <div class="h-11 w-11 rounded-xl bg-gradient-to-tr from-emerald-500 via-teal-400 to-cyan-400 flex items-center justify-center shadow-lg shadow-emerald-500/30 animate-pulse">
+                        <i class="fa-solid fa-hand-holding-medical text-slate-950 text-xl"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-xl font-black tracking-wider bg-gradient-to-r from-white via-emerald-400 to-teal-300 bg-clip-text text-transparent">AVS VET CARE</span>
+                        <span class="text-[9px] font-bold text-cyan-400 tracking-widest uppercase -mt-0.5">(ISO 9001:2015 & GMP CERTIFIED)</span>
+                    </div>
+                </div>
+                <!-- Desktop Link Infrastructure -->
+                <div class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide">
+                    <a href="#hero" class="text-slate-400 hover:text-emerald-400 transition-colors duration-300">Home</a>
+                    <a href="#about" class="text-slate-400 hover:text-emerald-400 transition-colors duration-300">About</a>
+                    <a href="#products" class="text-slate-400 hover:text-emerald-400 transition-colors duration-300">Products</a>
+                    <a href="#contact" class="px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500 text-white hover:text-emerald-400 transition-all duration-300 shadow-lg hover:shadow-emerald-500/10">Contact Us</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-slate-400 hover:text-white text-xl p-2">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden z-10">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+            <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 text-emerald-300 border border-emerald-500/30 mb-8 uppercase tracking-widest animate-bounce">
+                Your Animals Healthcare Now In Safe Hands
+            </span>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight mb-8 leading-none">
+                High-Quality Manufacturer <br class="hidden sm:inline"> & Supplier of 
+                <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent drop-shadow-sm">Animal Feed Supplements</span>
+            </h1>
+            <p class="text-base sm:text-lg lg:text-xl text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed">
+                AVS Vet Care provides assured-quality veterinary medicines, liquid feed supplements, and metabolic boosters carefully formulated to keep poultry and livestock robust, healthy, and highly productive.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-5 max-w-md mx-auto sm:max-w-none">
+                <a href="#products" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-slate-950 font-black hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl shadow-emerald-500/20 text-center tracking-wide">
+                    View Product Showcase
+                </a>
+                <a href="tel:+918384858758" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 text-slate-200 hover:text-white transition-all duration-300 text-center flex items-center justify-center gap-3 font-bold group">
+                    <i class="fa-solid fa-phone text-emerald-400 group-hover:rotate-12 transition-transform"></i> Call Order Desk
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Credentials -->
+    <section id="about" class="py-20 border-t border-slate-900 bg-slate-950/60 relative z-10 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="p-8 rounded-2xl bg-slate-900/40 border border-slate-900 hover:border-emerald-500/20 transition-colors duration-300 group">
+                    <div class="h-14 w-14 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-5 mx-auto group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-solid fa-award text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Certified Safety Standards</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">An ISO 9001:2015 & GMP Certified Manufacturing Facility balancing premium animal wellness.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-slate-900/40 border border-slate-900 hover:border-teal-500/20 transition-colors duration-300 group">
+                    <div class="h-14 w-14 rounded-2xl bg-teal-500/10 text-teal-400 flex items-center justify-center mb-5 mx-auto group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-solid fa-shield-cat text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Broad Spectrum Support</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Tailored compositions perfectly built for cattle, buffaloes, camels, horses, sheep, goats, and poultry setups.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-slate-900/40 border border-slate-900 hover:border-emerald-500/20 transition-colors duration-300 group sm:col-span-2 lg:col-span-1">
+                    <div class="h-14 w-14 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-5 mx-auto group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-solid fa-square-check text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Assured Quality</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Rigorous component selection ensures strict, functional purity for high-performance farm yields.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Showcase Gallery Section -->
+    <section id="products" class="py-24 border-t border-slate-900 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16 text-center sm:text-left">
+                <h2 class="text-3xl sm:text-4xl font-black text-white mb-4 tracking-tight">Product Portfolio</h2>
+                <p class="text-slate-400 text-sm max-w-xl">Click directly on any product card below to securely lock it into its raised display view mode.</p>
+            </div>
+
+            <!-- Grid Setup -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Product 1: Anavit-H Liquid -->
+                <div onclick="toggleLift(this)" class="product-card bg-slate-900/60 border border-slate-900 rounded-2xl p-6 flex flex-col justify-between overflow-hidden group cursor-pointer hover:shadow-2xl hover:shadow-emerald-500/5">
+                    <div>
+                        <div class="aspect-[4/3] w-full rounded-xl bg-slate-950 mb-5 overflow-hidden border border-slate-900 relative">
+                            <img src="WhatsApp Image 2026-06-16 at 6.36.19 PM (2).jpg" alt="Anavit-H Liquid" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent"></div>
+                        </div>
+                        <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+                            <span class="px-2.5 py-1 text-[10px] font-extrabold rounded-md bg-emerald-500/10 text-emerald-400 uppercase tracking-wide">Liquid Feed Supplement</span>
+                            <span class="text-xs text-slate-500 font-bold">250ml / 500ml / 1000ml</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300">Anavit-H Liquid</h3>
+                        <p class="text-xs text-slate-400 mb-5 leading-relaxed">Liquid feed supplement optimized to enhance udder health, tissue structure strength, and ensure maximum milk yield output in cattle & poultry fields.</p>
+                        
+                        <div class="border-t border-slate-800/80 pt-4 mb-5">
+                            <span class="text-xs font-bold text-slate-300 block mb-2.5">Nutritional Profile (Per ml Approx):</span>
+                            <ul class="text-[11px] text-slate-400 space-y-1.5 grid grid-cols-2 gap-x-2">
+                                <li><strong>Vit A:</strong> 20000 I.U.</li>
+                                <li><strong>Vit D3:</strong> 10000 I.U.</li>
+                                <li><strong>Vit E:</strong> 50 mg</li>
+                                <li><strong>Vitamin H:</strong> 125 Mcg</li>
+                                <li><strong>Vit C:</strong> 60 mg</li>
+                                <li><strong>Selenium:</strong> 200 mcg</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800/60">
+                        <span class="text-[10px] uppercase font-bold text-cyan-400 block mb-1">Directions (Daily):</span>
+                        <p class="text-[11px] text-slate-400 leading-relaxed">Cattle: 10 ml | Calves: 2-5 ml | Layers/Chicks: 5-10 ml per 100 birds.</p>
+                    </div>
+                </div>
+
+                <!-- Product 2: Vs Tone -->
+                <div onclick="toggleLift(this)" class="product-card bg-slate-900/60 border border-slate-900 rounded-2xl p-6 flex flex-col justify-between overflow-hidden group cursor-pointer hover:shadow-2xl hover:shadow-emerald-500/5">
+                    <div>
+                        <div class="aspect-[4/3] w-full rounded-xl bg-slate-950 mb-5 overflow-hidden border border-slate-900 relative">
+                            <img src="WhatsApp Image 2026-06-16 at 6.36.19 PM (1).jpg" alt="Vs Tone Herbal Uterine Tonic" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent"></div>
+                        </div>
+                        <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+                            <span class="px-2.5 py-1 text-[10px] font-extrabold rounded-md bg-emerald-500/10 text-emerald-400 uppercase tracking-wide">Herbal Uterine Tonic</span>
+                            <span class="text-xs text-slate-500 font-bold">500ml / 1L / 5L</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300">Vs Tone ®</h3>
+                        <p class="text-xs text-slate-400 mb-5 leading-relaxed">Formulated with Calcium & Phosphorus. Infused with powerful Ecbolic properties for complete cleansing and rapid prophylaxis after calving.</p>
+                        
+                        <div class="border-t border-slate-800/80 pt-4 mb-5">
+                            <span class="text-xs font-bold text-slate-300 block mb-2.5">Key Ingredients (Per 20 ml):</span>
+                            <ul class="text-[11px] text-slate-400 space-y-1.5 grid grid-cols-2 gap-x-2">
+                                <li><strong>Dashmool:</strong> 450mg</li>
+                                <li><strong>Kala Jeera:</strong> 450mg</li>
+                                <li><strong>Ashoka:</strong> 300mg</li>
+                                <li><strong>Calcium:</strong> 600 mg</li>
+                                <li><strong>Phosphorus:</strong> 300 mg</li>
+                                <li><strong>Vit A/D3/E:</strong> Rich</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800/60">
+                        <span class="text-[10px] uppercase font-bold text-cyan-400 block mb-1">Primary Indication:</span>
+                        <p class="text-[11px] text-slate-400 leading-relaxed">For Retained Placenta & complete prophylaxis setup. Effective induction of heat schedules.</p>
+                    </div>
+                </div>
+
+                <!-- Product 3: NuroForce Syrup -->
+                <div onclick="toggleLift(this)" class="product-card bg-slate-900/60 border border-slate-900 rounded-2xl p-6 flex flex-col justify-between overflow-hidden group cursor-pointer hover:shadow-2xl hover:shadow-emerald-500/5">
+                    <div>
+                        <div class="aspect-[4/3] w-full rounded-xl bg-slate-950 mb-5 overflow-hidden border border-slate-900 relative">
+                            <img src="WhatsApp Image 2026-06-16 at 6.36.19 PM.jpg" alt="NuroForce Syrup" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent"></div>
+                        </div>
+                        <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+                            <span class="px-2.5 py-1 text-[10px] font-extrabold rounded-md bg-emerald-500/10 text-emerald-400 uppercase tracking-wide">Vitamins & Minerals</span>
+                            <span class="text-xs text-slate-500 font-bold">500ml / 1 Litre</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-1">NuroForce Syrup</h3>
+                        <p class="text-xs text-slate-400 mb-4 leading-relaxed">Mecobalamin, Vitamins, and Minerals syrup optimized to tackle physical weakness, muscular stiffness, lag, and nervous breakdowns or paralysis symptoms.</p>
+                        
+                        <div class="border-t border-slate-800/80 pt-4 mb-5">
+                            <span class="text-xs font-bold text-slate-300 block mb-2.5">Composition Profile (Per 15 ml):</span>
+                            <ul class="text-[11px] text-slate-400 space-y-1.5 grid grid-cols-2 gap-x-2">
+                                <li><strong>Mecobalamin:</strong> 500 mcg</li>
+                                <li><strong>Vitamin B1 / B2 / B6</strong></li>
+                                <li><strong>Biotin USP:</strong> 300 mcg</li>
+                                <li><strong>Zinc Sulphate:</strong> 7.5 mg</li>
+                                <li><strong>Niacinamide IP:</strong> 45 mg</li>
+                                <li><strong>Lycopene / D3 / K3</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800/60">
+                        <span class="text-[10px] uppercase font-bold text-cyan-400 block mb-1">Benefits:</span>
+                        <p class="text-[11px] text-slate-400 leading-relaxed">Accelerates fast post-illness physiological recovery and treats general walking fatigue.</p>
+                    </div>
+                </div>
+
+                <!-- Product 4: VS Ferrol-Vet -->
+                <div onclick="toggleLift(this)" class="product-card bg-slate-900/60 border border-slate-900 rounded-2xl p-6 flex flex-col justify-between overflow-hidden group cursor-pointer hover:shadow-2xl hover:shadow-emerald-500/5">
+                    <div>
+                        <div class="aspect-[4/3] w-full rounded-xl bg-slate-950 mb-5 overflow-hidden border border-slate-900 relative">
+                            <img src="WhatsApp Image 2026-06-16 at 6.36.20 PM (1).jpg" alt="VS Ferrol-Vet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent"></div>
+                        </div>
+                        <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+                            <span class="px-2.5 py-1 text-[10px] font-extrabold rounded-md bg-emerald-500/10 text-emerald-400 uppercase tracking-wide">Malt-Based Paste</span>
+                            <span class="text-xs text-slate-500 font-bold">1 kg Pack</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300">VS Ferrol-Vet</h3>
+                        <p class="text-xs text-slate-400 mb-5 leading-relaxed">Malt-based iron, copper, and calcium feed blend. Crafted to eliminate nutritional anemia, support pregnancy weight parameters, and elevate low growth performance indicators.</p>
+                        
+                        <div class="border-t border-slate-800/80 pt-4 mb-5">
+                            <span class="text-xs font-bold text-slate-300 block mb-2.5">Nutritional Values (Per 20 gm):</span>
+                            <ul class="text-[11px] text-slate-400 space-y-1.5 grid grid-cols-2 gap-x-2">
+                                <li><strong>Malt Extract:</strong> 4.52 gm</li>
+                                <li><strong>Ferric Ammonium:</strong> 450mg</li>
+                                <li><strong>Calcium Gluconate:</strong> 360mg</li>
+                                <li><strong>Copper / Cobalt:</strong> Active</li>
+                                <li><strong>Biotin / Folic Acid</strong></li>
+                                <li><strong>Vitamin B12</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800/60">
+                        <span class="text-[10px] uppercase font-bold text-cyan-400 block mb-1">Usage Grid:</span>
+                        <p class="text-[11px] text-slate-400 leading-relaxed">Cattle/Horses: 30-50g Daily | Sheep/Goats: 10-50g Daily.</p>
+                    </div>
+                </div>
+
+                <!-- Product 5: Chelated Anacal Gold -->
+                <div onclick="toggleLift(this)" class="product-card bg-slate-900/60 border border-slate-900 rounded-2xl p-6 flex flex-col justify-between overflow-hidden group cursor-pointer hover:shadow-2xl hover:shadow-emerald-500/5">
+                    <div>
+                        <div class="aspect-[4/3] w-full rounded-xl bg-slate-950 mb-5 overflow-hidden border border-slate-900 relative">
+                            <img src="WhatsApp Image 2026-06-16 at 6.36.20 PM.jpg" alt="Chelated Anacal Gold" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent"></div>
+                        </div>
+                        <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+                            <span class="px-2.5 py-1 text-[10px] font-extrabold rounded-md bg-emerald-500/10 text-emerald-400 uppercase tracking-wide">Chelated Minerals</span>
+                            <span class="text-xs text-slate-500 font-bold">1L / 5L / 20L</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300">Chelated Anacal Gold</h3>
+                        <p class="text-xs text-slate-400 mb-5 leading-relaxed">High-performance blend packed with Silymarin, complex carbohydrates, and key chelated minerals. Supports consistent, high dairy yield, skeletal structure growth, and thick-shelled egg optimization.</p>
+                        
+                        <div class="border-t border-slate-800/80 pt-4 mb-5">
+                            <span class="text-xs font-bold text-slate-300 block mb-2.5">Value Concentration (Per 100 ml):</span>
+                            <ul class="text-[11px] text-slate-400 space-y-1.5 grid grid-cols-2 gap-x-2">
+                                <li><strong>Calcium:</strong> 6200 mg</li>
+                                <li><strong>Phosphorus:</strong> 3100 mg</li>
+                                <li><strong>Shatavari:</strong> 1000mg</li>
+                                <li><strong>Silymarin:</strong> 450 mg</li>
+                                <li><strong>Carbohydrate:</strong> 35000mg</li>
+                                <li><strong>Vitamin H / E / B12</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800/60">
+                        <span class="text-[10px] uppercase font-bold text-cyan-400 block mb-1">Daily Feeding Dose:</span>
+                        <p class="text-[11px] text-slate-400 leading-relaxed">Cattle/Camel: 100-150 ml | Sheep & Goat: 40-80 ml.</p>
+                    </div>
+                </div>
+
+                <!-- Product 6: VS Cool Suspension -->
+                <div onclick="toggleLift(this)" class="product-card bg-slate-900/60 border border-slate-900 rounded-2xl p-6 flex flex-col justify-between overflow-hidden group cursor-pointer hover:shadow-2xl hover:shadow-emerald-500/5">
+                    <div>
+                        <div class="aspect-[4/3] w-full rounded-xl bg-slate-950 mb-5 overflow-hidden border border-slate-900 relative">
+                            <img src="WhatsApp Image 2026-06-16 at 6.36.21 PM (1).jpg" alt="VS Cool" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent"></div>
+                        </div>
+                        <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+                            <span class="px-2.5 py-1 text-[10px] font-extrabold rounded-md bg-emerald-500/10 text-emerald-400 uppercase tracking-wide">Activated Charcoal</span>
+                            <span class="text-xs text-slate-500 font-bold">300 ml Tube</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300">VS Cool</h3>
+                        <p class="text-xs text-slate-400 mb-5 leading-relaxed">An excellent, rapid-acting gastrointestinal adsorbent suspension used to neutralize chemical toxin poisoning, grain overload, severe acidosis, and dynamic digestive upset patterns.</p>
+                        
+                        <div class="border-t border-slate-800/80 pt-4 mb-5">
+                            <span class="text-xs font-bold text-slate-300 block mb-2.5">Chemical Composition (Per ml):</span>
+                            <ul class="text-[11px] text-slate-400 space-y-1.5 grid grid-cols-2 gap-x-2">
+                                <li><strong>Activated Charcoal:</strong> 100mg</li>
+                                <li><strong>Attapulgite:</strong> 200 mg</li>
+                                <li><strong>Osmotic Laxative:</strong> 500mg</li>
+                                <li><strong>Simethicon:</strong> 500 mg</li>
+                                <li><strong>Sorbitol:</strong> 100 mg</li>
+                                <li><strong>Lactobacillus:</strong> 5M Spores</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800/60">
+                        <span class="text-[10px] uppercase font-bold text-cyan-400 block mb-1">Dosage Schedule:</span>
+                        <p class="text-[11px] text-slate-400 leading-relaxed">Adult Cattle: 1 Full Tube (300ml). Small Animals: 2-3ml per kg body weight.</p>
+                    </div>
+                </div>
+
+                <!-- Product 7: Advance Fourtrim + -->
+                <div onclick="toggleLift(this)" class="product-card bg-slate-900/60 border border-slate-900 rounded-2xl p-6 flex flex-col justify-between overflow-hidden group cursor-pointer hover:shadow-2xl hover:shadow-emerald-500/5 sm:col-span-2 lg:col-span-1 mx-auto w-full">
+                    <div>
+                        <div class="aspect-[4/3] w-full rounded-xl bg-slate-950 mb-5 overflow-hidden border border-slate-900 relative">
+                            <img src="WhatsApp Image 2026-06-16 at 6.36.21 PM.jpg" alt="Advance Fourtrim +" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent"></div>
+                        </div>
+                        <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+                            <span class="px-2.5 py-1 text-[10px] font-extrabold rounded-md bg-emerald-500/10 text-emerald-400 uppercase tracking-wide">Therapeutic Supplement</span>
+                            <span class="text-xs text-slate-500 font-bold">300 gm Pack</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300">Advance Fourtrim +</h3>
+                        <p class="text-xs text-slate-400 mb-5 leading-relaxed">Specialized functional supplement built to stabilize somatic udder environments, address pH irregularities, check presence of blood streaks in milk, and clear systemic clumping tissue configurations.</p>
+                        
+                        <div class="border-t border-slate-800/80 pt-4 mb-5">
+                            <span class="text-xs font-bold text-slate-300 block mb-2.5">Composition Matrix (Per 20 gm):</span>
+                            <ul class="text-[11px] text-slate-400 space-y-1.5 grid grid-cols-2 gap-x-2">
+                                <li><strong>Malt Extract:</strong> 4.52 gm</li>
+                                <li><strong>Calcium Gluconate:</strong> 360mg</li>
+                                <li><strong>Ferric Ammonium:</strong> 450mg</li>
+                                <li><strong>Copper Sulphate:</strong> 100mg</li>
+                                <li><strong>Cobalt / Zinc:</strong> Active</li>
+                                <li><strong>Vit D3 / B12 / Biotin:</strong> Rich</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800/60">
+                        <span class="text-[10px] uppercase font-bold text-cyan-400 block mb-1">Core Action Point:</span>
+                        <p class="text-[11px] text-slate-400 leading-relaxed">Corrects udder pH structure parameters and supports clean milk transition cycles.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact section -->
+    <section id="contact" class="py-24 border-t border-slate-900 bg-slate-950/40 relative z-10 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Info block -->
+                <div class="lg:col-span-5 flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-3xl sm:text-4xl font-black text-white mb-6 tracking-tight">Connect Commercial Desk</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-8">
+                            Ready to organize distribution, state sub-dealership networks, or process direct institutional product requirements? Contact us across official active channels.
+                        </p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-900/40 border border-slate-900 hover:border-emerald-500/30 transition-all duration-300">
+                                <div class="h-10 w-10 rounded-lg bg-slate-800 flex items-center justify-center text-emerald-400 border border-slate-700 shrink-0">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Direct Hotline</h5>
+                                    <p class="text-white font-semibold mt-0.5">
+                                        <a href="tel:+918384858758" class="hover:text-emerald-400 transition-colors">+91 83848 58758</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-900/40 border border-slate-900 hover:border-emerald-500/30 transition-all duration-300">
+                                <div class="h-10 w-10 rounded-lg bg-slate-800 flex items-center justify-center text-emerald-400 border border-slate-700 shrink-0">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Commercial Email</h5>
+                                    <p class="text-white font-semibold mt-0.5">
+                                        <a href="mailto:avsvetcare@gmail.com" class="hover:text-emerald-400 transition-colors">avsvetcare@gmail.com</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-900/40 border border-slate-900 hover:border-teal-500/30 transition-all duration-300">
+                                <div class="h-10 w-10 rounded-lg bg-slate-800 flex items-center justify-center text-teal-400 border border-slate-700 shrink-0">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Registered Plant Address</h5>
+                                    <p class="text-slate-300 text-xs mt-1 leading-relaxed">
+                                        Plot No. 377/5, Barhi Road, HSIIDC, Post - Ganaur, Sonepat, Haryana - 131101
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 lg:mt-0 pt-8 border-t border-slate-900 flex items-center gap-4">
+                        <a href="https://wa.me/918384858758" target="_blank" class="h-12 w-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:border-emerald-500 transition-all duration-300 shadow-lg hover:scale-110">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                        </a>
+                        <div class="text-xs text-slate-500 font-semibold tracking-wide">Click to chat instantly with logistics desk</div>
+                    </div>
+                </div>
+
+                <!-- Form block -->
+                <div class="lg:col-span-7 bg-slate-900/40 border border-slate-900 p-6 sm:p-8 rounded-2xl shadow-2xl backdrop-blur-md">
+                    <form class="space-y-6" onsubmit="event.preventDefault(); alert('Inquiry recorded. The AVS Vet Care team will connect shortly!');">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Company / Clinician Name</label>
+                                <input type="text" placeholder="Dr. Sharma" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-emerald-500 focus:outline-none text-white text-sm placeholder:text-slate-700 transition-colors duration-300" required>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Active Contact Number</label>
+                                <input type="text" placeholder="Your Phone" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-emerald-500 focus:outline-none text-white text-sm placeholder:text-slate-700 transition-colors duration-300" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Target Stock Product Selection</label>
+                            <select class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-emerald-500 focus:outline-none text-slate-400 text-sm transition-colors duration-300">
+                                <option>Anavit-H Liquid Supplement</option>
+                                <option>Vs Tone ® Herbal Tonic</option>
+                                <option>NuroForce Recovery Syrup</option>
+                                <option>VS Ferrol-Vet Malt Blend</option>
+                                <option>Chelated Anacal Gold</option>
+                                <option>VS Cool Charcoal Adsorbent</option>
+                                <option>Advance Fourtrim + Compound</option>
+                                <option>Bulk Wholesale dealership network setup</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Order / Dealership Specifications</label>
+                            <textarea rows="4" placeholder="Detail your batch sizing configurations, regional delivery logistics or clinical parameters..." class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-emerald-500 focus:outline-none text-white text-sm placeholder:text-slate-700 transition-colors duration-300 resize-none" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 text-sm font-black tracking-wider hover:opacity-90 transition-all duration-300 shadow-xl shadow-emerald-500/10">
+                            Submit Order Intent Specifications
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-slate-950 border-t border-slate-900 text-center text-xs text-slate-600 relative z-10">
+        <p>&copy; 2026 AVS VET CARE. All industrial manufacturing design specifications and compound formulations reserved.</p>
+    </footer>
+
+    <!-- Scripts for UI Interactions -->
+    <script>
+        // High fidelity cursor follower routing
+        const glowCircle = document.getElementById('glow-circle');
+        window.addEventListener('mousemove', (e) => {
+            glowCircle.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
+        });
+
+        // Mobile slider configuration
+        const mobileMenu = document.getElementById('mobile-menu');
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+        }
+
+        // Lift script toggle architecture
+        function toggleLift(cardElement) {
+            // Check if selected card is already lifted
+            const isLifted = cardElement.classList.contains('product-card-lifted');
+            
+            // Unlift any existing active configurations safely
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.classList.remove('product-card-lifted');
+            });
+            
+            // If it wasn't lifted before, apply the deep lift classes
+            if (!isLifted) {
+                cardElement.classList.add('product-card-lifted');
+            }
+        }
+    </script>
+</body>
+</html>
