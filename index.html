@@ -10,13 +10,11 @@
         html {
             scroll-behavior: smooth;
         }
-
-        /* High-attraction breathing ambient background pulse */
+        /* Rainbow Glow Mouse Follower Background Effect */
         @keyframes magneticPulse {
             0%, 100% { transform: scale(1); opacity: 0.15; }
             50% { transform: scale(1.15); opacity: 0.25; }
         }
-
         .ambient-glow-1 {
             position: absolute;
             top: 10%;
@@ -29,7 +27,6 @@
             pointer-events: none;
             animation: magneticPulse 8s ease-in-out infinite;
         }
-
         .ambient-glow-2 {
             position: absolute;
             bottom: 15%;
@@ -42,8 +39,6 @@
             pointer-events: none;
             animation: magneticPulse 12s ease-in-out infinite reverse;
         }
-
-        /* High-Intensity Rainbow Glow Mouse Follower */
         .mouse-glow {
             position: fixed;
             top: 0;
@@ -61,8 +56,6 @@
             will-change: transform;
             transition: transform 0.12s cubic-bezier(0.25, 1, 0.5, 1);
         }
-
-        /* Custom active lifting script classes to prevent conflict with standard hover styles */
         .product-card {
             transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s ease, box-shadow 0.3s ease;
         }
@@ -75,10 +68,8 @@
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-emerald-500 selection:text-slate-900 relative min-h-screen overflow-x-hidden">
 
-    <!-- Rainbow Follower Dynamic Background Element -->
     <div id="glow-circle" class="mouse-glow hidden lg:block"></div>
 
-    <!-- Background Ambient Structural Magnetism -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <div class="ambient-glow-1"></div>
         <div class="ambient-glow-2"></div>
@@ -92,11 +83,11 @@
         <a href="#hero" onclick="toggleMobileMenu()" class="text-2xl font-semibold hover:text-emerald-400 transition-colors">Home</a>
         <a href="#about" onclick="toggleMobileMenu()" class="text-2xl font-semibold hover:text-emerald-400 transition-colors">About</a>
         <a href="#products" onclick="toggleMobileMenu()" class="text-2xl font-semibold hover:text-emerald-400 transition-colors">Products</a>
-        <a href="#contact" onclick="toggleMobileMenu()" class="px-6 py-3 rounded-xl bg-emerald-600 text-slate-950 font-bold shadow-lg shadow-emerald-500/20">Contact Us</a>
+        <a href="#contact" class="px-6 py-3 rounded-xl bg-emerald-600 text-slate-950 font-bold shadow-lg shadow-emerald-500/20">Contact Us</a>
     </div>
 
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 w-full z-40 bg-slate-950/80 backdrop-blur-xl border-b border-slate-900 transition-all duration-300">
+    <nav class="fixed top-0 left-0 w-full z-40 bg-slate-950/80 backdrop-blur-xl border-b border-slate-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex items-center gap-3">
@@ -108,14 +99,12 @@
                         <span class="text-[9px] font-bold text-cyan-400 tracking-widest uppercase -mt-0.5">(ISO 9001:2015 & GMP CERTIFIED)</span>
                     </div>
                 </div>
-                <!-- Desktop Link Infrastructure -->
                 <div class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide">
                     <a href="#hero" class="text-slate-400 hover:text-emerald-400 transition-colors duration-300">Home</a>
                     <a href="#about" class="text-slate-400 hover:text-emerald-400 transition-colors duration-300">About</a>
                     <a href="#products" class="text-slate-400 hover:text-emerald-400 transition-colors duration-300">Products</a>
                     <a href="#contact" class="px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500 text-white hover:text-emerald-400 transition-all duration-300 shadow-lg hover:shadow-emerald-500/10">Contact Us</a>
                 </div>
-                <!-- Mobile Menu Button -->
                 <button onclick="toggleMobileMenu()" class="md:hidden text-slate-400 hover:text-white text-xl p-2">
                     <i class="fa-solid fa-bars-staggered"></i>
                 </button>
@@ -131,12 +120,12 @@
             </span>
             <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight mb-8 leading-none">
                 High-Quality Manufacturer <br class="hidden sm:inline"> & Supplier of 
-                <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent drop-shadow-sm">Animal Feed Supplements</span>
+                <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">Animal Feed Supplements</span>
             </h1>
             <p class="text-base sm:text-lg lg:text-xl text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed">
                 AVS Vet Care provides assured-quality veterinary medicines, liquid feed supplements, and metabolic boosters carefully formulated to keep poultry and livestock robust, healthy, and highly productive.
             </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-5 max-w-md mx-auto sm:max-w-none">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
                 <a href="#products" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-slate-950 font-black hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl shadow-emerald-500/20 text-center tracking-wide">
                     View Product Showcase
                 </a>
@@ -150,27 +139,21 @@
     <!-- About Credentials -->
     <section id="about" class="py-20 border-t border-slate-900 bg-slate-950/60 relative z-10 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="p-8 rounded-2xl bg-slate-900/40 border border-slate-900 hover:border-emerald-500/20 transition-colors duration-300 group">
-                    <div class="h-14 w-14 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-5 mx-auto group-hover:scale-110 transition-transform duration-300">
-                        <i class="fa-solid fa-award text-2xl"></i>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 rounded-2xl bg-slate-900/40 border border-slate-900">
+                    <i class="fa-solid fa-award text-2xl text-emerald-400 mb-3"></i>
                     <h3 class="text-xl font-bold text-white mb-2">Certified Safety Standards</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">An ISO 9001:2015 & GMP Certified Manufacturing Facility balancing premium animal wellness.</p>
+                    <p class="text-slate-400 text-sm">An ISO 9001:2015 & GMP Certified Manufacturing Facility balancing premium animal wellness.</p>
                 </div>
-                <div class="p-8 rounded-2xl bg-slate-900/40 border border-slate-900 hover:border-teal-500/20 transition-colors duration-300 group">
-                    <div class="h-14 w-14 rounded-2xl bg-teal-500/10 text-teal-400 flex items-center justify-center mb-5 mx-auto group-hover:scale-110 transition-transform duration-300">
-                        <i class="fa-solid fa-shield-cat text-2xl"></i>
-                    </div>
+                <div class="p-8 rounded-2xl bg-slate-900/40 border border-slate-900">
+                    <i class="fa-solid fa-shield-cat text-2xl text-teal-400 mb-3"></i>
                     <h3 class="text-xl font-bold text-white mb-2">Broad Spectrum Support</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Tailored compositions perfectly built for cattle, buffaloes, camels, horses, sheep, goats, and poultry setups.</p>
+                    <p class="text-slate-400 text-sm">Tailored compositions perfectly built for cattle, buffaloes, camels, horses, sheep, goats, and poultry setups.</p>
                 </div>
-                <div class="p-8 rounded-2xl bg-slate-900/40 border border-slate-900 hover:border-emerald-500/20 transition-colors duration-300 group sm:col-span-2 lg:col-span-1">
-                    <div class="h-14 w-14 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-5 mx-auto group-hover:scale-110 transition-transform duration-300">
-                        <i class="fa-solid fa-square-check text-2xl"></i>
-                    </div>
+                <div class="p-8 rounded-2xl bg-slate-900/40 border border-slate-900">
+                    <i class="fa-solid fa-square-check text-2xl text-emerald-400 mb-3"></i>
                     <h3 class="text-xl font-bold text-white mb-2">Assured Quality</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Rigorous component selection ensures strict, functional purity for high-performance farm yields.</p>
+                    <p class="text-slate-400 text-sm">Rigorous component selection ensures strict, functional purity for high-performance farm yields.</p>
                 </div>
             </div>
         </div>
@@ -179,9 +162,9 @@
     <!-- Product Showcase Gallery Section -->
     <section id="products" class="py-24 border-t border-slate-900 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-16 text-center sm:text-left">
+            <div class="mb-16">
                 <h2 class="text-3xl sm:text-4xl font-black text-white mb-4 tracking-tight">Product Portfolio</h2>
-                <p class="text-slate-400 text-sm max-w-xl">Click directly on any product card below to securely lock it into its raised display view mode.</p>
+                <p class="text-slate-400 text-sm">Click directly on any product card below to securely lock it into its raised display view mode.</p>
             </div>
 
             <!-- Grid Setup -->
@@ -191,7 +174,7 @@
                 <div onclick="toggleLift(this)" class="product-card bg-slate-900/60 border border-slate-900 rounded-2xl p-6 flex flex-col justify-between overflow-hidden group cursor-pointer hover:shadow-2xl hover:shadow-emerald-500/5">
                     <div>
                         <div class="aspect-[4/3] w-full rounded-xl bg-slate-950 mb-5 overflow-hidden border border-slate-900 relative">
-                            <img src="WhatsApp Image 2026-06-16 at 6.36.19 PM (2).jpg" alt="Anavit-H Liquid" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                            <img src="pic1.jpg" alt="Anavit-H Liquid" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent"></div>
                         </div>
                         <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
@@ -215,7 +198,7 @@
                     </div>
                     <div class="pt-3 border-t border-slate-800/60">
                         <span class="text-[10px] uppercase font-bold text-cyan-400 block mb-1">Directions (Daily):</span>
-                        <p class="text-[11px] text-slate-400 leading-relaxed">Cattle: 10 ml | Calves: 2-5 ml | Layers/Chicks: 5-10 ml per 100 birds.</p>
+                        <p class="text-[11px] text-slate-400">Cattle: 10 ml | Calves: 2-5 ml | Layers/Chicks: 5-10 ml per 100 birds.</p>
                     </div>
                 </div>
 
@@ -223,7 +206,7 @@
                 <div onclick="toggleLift(this)" class="product-card bg-slate-900/60 border border-slate-900 rounded-2xl p-6 flex flex-col justify-between overflow-hidden group cursor-pointer hover:shadow-2xl hover:shadow-emerald-500/5">
                     <div>
                         <div class="aspect-[4/3] w-full rounded-xl bg-slate-950 mb-5 overflow-hidden border border-slate-900 relative">
-                            <img src="WhatsApp Image 2026-06-16 at 6.36.19 PM (1).jpg" alt="Vs Tone Herbal Uterine Tonic" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                            <img src="pic2.jpg" alt="Vs Tone Herbal Uterine Tonic" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent"></div>
                         </div>
                         <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
@@ -247,7 +230,7 @@
                     </div>
                     <div class="pt-3 border-t border-slate-800/60">
                         <span class="text-[10px] uppercase font-bold text-cyan-400 block mb-1">Primary Indication:</span>
-                        <p class="text-[11px] text-slate-400 leading-relaxed">For Retained Placenta & complete prophylaxis setup. Effective induction of heat schedules.</p>
+                        <p class="text-[11px] text-slate-400">For Retained Placenta & complete prophylaxis setup. Effective induction of heat schedules.</p>
                     </div>
                 </div>
 
@@ -255,14 +238,14 @@
                 <div onclick="toggleLift(this)" class="product-card bg-slate-900/60 border border-slate-900 rounded-2xl p-6 flex flex-col justify-between overflow-hidden group cursor-pointer hover:shadow-2xl hover:shadow-emerald-500/5">
                     <div>
                         <div class="aspect-[4/3] w-full rounded-xl bg-slate-950 mb-5 overflow-hidden border border-slate-900 relative">
-                            <img src="WhatsApp Image 2026-06-16 at 6.36.19 PM.jpg" alt="NuroForce Syrup" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                            <img src="pic3.jpg" alt="NuroForce Syrup" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent"></div>
                         </div>
                         <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
                             <span class="px-2.5 py-1 text-[10px] font-extrabold rounded-md bg-emerald-500/10 text-emerald-400 uppercase tracking-wide">Vitamins & Minerals</span>
                             <span class="text-xs text-slate-500 font-bold">500ml / 1 Litre</span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-1">NuroForce Syrup</h3>
+                        <h3 class="text-2xl font-black text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300">NuroForce Syrup</h3>
                         <p class="text-xs text-slate-400 mb-4 leading-relaxed">Mecobalamin, Vitamins, and Minerals syrup optimized to tackle physical weakness, muscular stiffness, lag, and nervous breakdowns or paralysis symptoms.</p>
                         
                         <div class="border-t border-slate-800/80 pt-4 mb-5">
@@ -279,7 +262,7 @@
                     </div>
                     <div class="pt-3 border-t border-slate-800/60">
                         <span class="text-[10px] uppercase font-bold text-cyan-400 block mb-1">Benefits:</span>
-                        <p class="text-[11px] text-slate-400 leading-relaxed">Accelerates fast post-illness physiological recovery and treats general walking fatigue.</p>
+                        <p class="text-[11px] text-slate-400">Accelerates fast post-illness physiological recovery and treats general walking fatigue.</p>
                     </div>
                 </div>
 
@@ -287,7 +270,7 @@
                 <div onclick="toggleLift(this)" class="product-card bg-slate-900/60 border border-slate-900 rounded-2xl p-6 flex flex-col justify-between overflow-hidden group cursor-pointer hover:shadow-2xl hover:shadow-emerald-500/5">
                     <div>
                         <div class="aspect-[4/3] w-full rounded-xl bg-slate-950 mb-5 overflow-hidden border border-slate-900 relative">
-                            <img src="WhatsApp Image 2026-06-16 at 6.36.20 PM (1).jpg" alt="VS Ferrol-Vet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                            <img src="pic4.jpg" alt="VS Ferrol-Vet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent"></div>
                         </div>
                         <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
@@ -311,7 +294,7 @@
                     </div>
                     <div class="pt-3 border-t border-slate-800/60">
                         <span class="text-[10px] uppercase font-bold text-cyan-400 block mb-1">Usage Grid:</span>
-                        <p class="text-[11px] text-slate-400 leading-relaxed">Cattle/Horses: 30-50g Daily | Sheep/Goats: 10-50g Daily.</p>
+                        <p class="text-[11px] text-slate-400">Cattle/Horses: 30-50g Daily | Sheep/Goats: 10-50g Daily.</p>
                     </div>
                 </div>
 
@@ -319,7 +302,7 @@
                 <div onclick="toggleLift(this)" class="product-card bg-slate-900/60 border border-slate-900 rounded-2xl p-6 flex flex-col justify-between overflow-hidden group cursor-pointer hover:shadow-2xl hover:shadow-emerald-500/5">
                     <div>
                         <div class="aspect-[4/3] w-full rounded-xl bg-slate-950 mb-5 overflow-hidden border border-slate-900 relative">
-                            <img src="WhatsApp Image 2026-06-16 at 6.36.20 PM.jpg" alt="Chelated Anacal Gold" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                            <img src="pic5.jpg" alt="Chelated Anacal Gold" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent"></div>
                         </div>
                         <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
@@ -343,7 +326,7 @@
                     </div>
                     <div class="pt-3 border-t border-slate-800/60">
                         <span class="text-[10px] uppercase font-bold text-cyan-400 block mb-1">Daily Feeding Dose:</span>
-                        <p class="text-[11px] text-slate-400 leading-relaxed">Cattle/Camel: 100-150 ml | Sheep & Goat: 40-80 ml.</p>
+                        <p class="text-[11px] text-slate-400">Cattle/Camel: 100-150 ml | Sheep & Goat: 40-80 ml.</p>
                     </div>
                 </div>
 
@@ -351,7 +334,7 @@
                 <div onclick="toggleLift(this)" class="product-card bg-slate-900/60 border border-slate-900 rounded-2xl p-6 flex flex-col justify-between overflow-hidden group cursor-pointer hover:shadow-2xl hover:shadow-emerald-500/5">
                     <div>
                         <div class="aspect-[4/3] w-full rounded-xl bg-slate-950 mb-5 overflow-hidden border border-slate-900 relative">
-                            <img src="WhatsApp Image 2026-06-16 at 6.36.21 PM (1).jpg" alt="VS Cool" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                            <img src="pic6.jpg" alt="VS Cool" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent"></div>
                         </div>
                         <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
@@ -375,7 +358,7 @@
                     </div>
                     <div class="pt-3 border-t border-slate-800/60">
                         <span class="text-[10px] uppercase font-bold text-cyan-400 block mb-1">Dosage Schedule:</span>
-                        <p class="text-[11px] text-slate-400 leading-relaxed">Adult Cattle: 1 Full Tube (300ml). Small Animals: 2-3ml per kg body weight.</p>
+                        <p class="text-[11px] text-slate-400">Adult Cattle: 1 Full Tube (300ml). Small Animals: 2-3ml per kg body weight.</p>
                     </div>
                 </div>
 
@@ -383,7 +366,7 @@
                 <div onclick="toggleLift(this)" class="product-card bg-slate-900/60 border border-slate-900 rounded-2xl p-6 flex flex-col justify-between overflow-hidden group cursor-pointer hover:shadow-2xl hover:shadow-emerald-500/5 sm:col-span-2 lg:col-span-1 mx-auto w-full">
                     <div>
                         <div class="aspect-[4/3] w-full rounded-xl bg-slate-950 mb-5 overflow-hidden border border-slate-900 relative">
-                            <img src="WhatsApp Image 2026-06-16 at 6.36.21 PM.jpg" alt="Advance Fourtrim +" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                            <img src="pic7.jpg" alt="Advance Fourtrim +" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent"></div>
                         </div>
                         <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
@@ -407,7 +390,7 @@
                     </div>
                     <div class="pt-3 border-t border-slate-800/60">
                         <span class="text-[10px] uppercase font-bold text-cyan-400 block mb-1">Core Action Point:</span>
-                        <p class="text-[11px] text-slate-400 leading-relaxed">Corrects udder pH structure parameters and supports clean milk transition cycles.</p>
+                        <p class="text-[11px] text-slate-400">Corrects udder pH structure parameters and supports clean milk transition cycles.</p>
                     </div>
                 </div>
 
@@ -420,7 +403,6 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                 
-                <!-- Info block -->
                 <div class="lg:col-span-5 flex flex-col justify-between">
                     <div>
                         <h2 class="text-3xl sm:text-4xl font-black text-white mb-6 tracking-tight">Connect Commercial Desk</h2>
@@ -466,29 +448,28 @@
                     </div>
 
                     <div class="mt-12 lg:mt-0 pt-8 border-t border-slate-900 flex items-center gap-4">
-                        <a href="https://wa.me/918384858758" target="_blank" class="h-12 w-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:border-emerald-500 transition-all duration-300 shadow-lg hover:scale-110">
+                        <a href="https://wa.me/918384858758" target="_blank" class="h-12 w-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:border-emerald-500 transition-all duration-300">
                             <i class="fa-brands fa-whatsapp text-2xl"></i>
                         </a>
                         <div class="text-xs text-slate-500 font-semibold tracking-wide">Click to chat instantly with logistics desk</div>
                     </div>
                 </div>
 
-                <!-- Form block -->
                 <div class="lg:col-span-7 bg-slate-900/40 border border-slate-900 p-6 sm:p-8 rounded-2xl shadow-2xl backdrop-blur-md">
                     <form class="space-y-6" onsubmit="event.preventDefault(); alert('Inquiry recorded. The AVS Vet Care team will connect shortly!');">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Company / Clinician Name</label>
-                                <input type="text" placeholder="Dr. Sharma" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-emerald-500 focus:outline-none text-white text-sm placeholder:text-slate-700 transition-colors duration-300" required>
+                                <input type="text" placeholder="Dr. Sharma" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-emerald-500 focus:outline-none text-white text-sm placeholder:text-slate-700 transition-colors" required>
                             </div>
                             <div>
                                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Active Contact Number</label>
-                                <input type="text" placeholder="Your Phone" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-emerald-500 focus:outline-none text-white text-sm placeholder:text-slate-700 transition-colors duration-300" required>
+                                <input type="text" placeholder="Your Phone" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-emerald-500 focus:outline-none text-white text-sm placeholder:text-slate-700 transition-colors" required>
                             </div>
                         </div>
                         <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Target Stock Product Selection</label>
-                            <select class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-emerald-500 focus:outline-none text-slate-400 text-sm transition-colors duration-300">
+                            <select class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-emerald-500 focus:outline-none text-slate-400 text-sm transition-colors">
                                 <option>Anavit-H Liquid Supplement</option>
                                 <option>Vs Tone ® Herbal Tonic</option>
                                 <option>NuroForce Recovery Syrup</option>
@@ -501,9 +482,9 @@
                         </div>
                         <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Order / Dealership Specifications</label>
-                            <textarea rows="4" placeholder="Detail your batch sizing configurations, regional delivery logistics or clinical parameters..." class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-emerald-500 focus:outline-none text-white text-sm placeholder:text-slate-700 transition-colors duration-300 resize-none" required></textarea>
+                            <textarea rows="4" placeholder="Detail your batch sizing configurations, regional delivery logistics or clinical parameters..." class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-emerald-500 focus:outline-none text-white text-sm placeholder:text-slate-700 transition-colors resize-none" required></textarea>
                         </div>
-                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 text-sm font-black tracking-wider hover:opacity-90 transition-all duration-300 shadow-xl shadow-emerald-500/10">
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 text-sm font-black tracking-wider hover:opacity-90">
                             Submit Order Intent Specifications
                         </button>
                     </form>
@@ -513,36 +494,24 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="py-8 bg-slate-950 border-t border-slate-900 text-center text-xs text-slate-600 relative z-10">
-        <p>&copy; 2026 AVS VET CARE. All industrial manufacturing design specifications and compound formulations reserved.</p>
+        <p>&copy; 2026 AVS VET CARE. All industrial manufacturing design specifications reserved.</p>
     </footer>
 
-    <!-- Scripts for UI Interactions -->
     <script>
-        // High fidelity cursor follower routing
         const glowCircle = document.getElementById('glow-circle');
         window.addEventListener('mousemove', (e) => {
             glowCircle.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
         });
-
-        // Mobile slider configuration
         const mobileMenu = document.getElementById('mobile-menu');
         function toggleMobileMenu() {
             mobileMenu.classList.toggle('translate-x-full');
         }
-
-        // Lift script toggle architecture
         function toggleLift(cardElement) {
-            // Check if selected card is already lifted
             const isLifted = cardElement.classList.contains('product-card-lifted');
-            
-            // Unlift any existing active configurations safely
             document.querySelectorAll('.product-card').forEach(card => {
                 card.classList.remove('product-card-lifted');
             });
-            
-            // If it wasn't lifted before, apply the deep lift classes
             if (!isLifted) {
                 cardElement.classList.add('product-card-lifted');
             }
